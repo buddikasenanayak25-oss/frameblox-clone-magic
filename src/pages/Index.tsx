@@ -4,6 +4,7 @@ import ProductSection from "@/components/ProductSection";
 import BrandStory from "@/components/BrandStory";
 import FeaturedProducts from "@/components/FeaturedProducts";
 import Footer from "@/components/Footer";
+import ComingSoonPopup from "@/components/ComingSoonPopup";
 
 const Index = () => {
   return (
@@ -16,6 +17,7 @@ const Index = () => {
         <FeaturedProducts />
       </main>
       <Footer />
+      <ComingSoonPopup />
     </div>
   );
 };
