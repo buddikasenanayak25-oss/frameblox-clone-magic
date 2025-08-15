@@ -1,7 +1,33 @@
 import { Button } from "@/components/ui/button";
 import { Clock, Star, Gift, Zap } from "lucide-react";
+import { useState } from "react";
+import { toast } from "@/hooks/use-toast";
 
 const ComingSoonPopup = () => {
+  const [email, setEmail] = useState("");
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) {
+      toast({
+        title: "Email Required",
+        description: "Please enter your email address",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    // Here you would typically send the email to your backend
+    console.log("Submitted email:", email);
+    
+    toast({
+      title: "Success! 🎉",
+      description: "You're on the list! We'll notify you when SELENZO drops.",
+    });
+    
+    setEmail(""); // Clear the input
+  };
+
   return (
     <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
       <div className="bg-card rounded-2xl shadow-2xl max-w-md w-full mx-auto border border-border animate-scale-in">
@@ -59,16 +85,18 @@ const ComingSoonPopup = () => {
           </div>
 
           {/* Email Signup */}
-          <div className="space-y-3">
+          <form onSubmit={handleSubmit} className="space-y-3">
             <input
               type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email for early access"
               className="w-full px-4 py-3 bg-secondary border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
             />
-            <Button className="w-full" variant="hero" size="lg">
+            <Button type="submit" className="w-full" variant="hero" size="lg">
               Notify Me First
             </Button>
-          </div>
+          </form>
 
           {/* Bottom Text */}
           <div className="text-center">
