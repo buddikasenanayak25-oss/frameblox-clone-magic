@@ -16,11 +16,11 @@
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 7%;
 
-    /* Brand Colors - Bold Orange/Red Gradient Theme */
-    --primary: 15 100% 50%;
+    /* Brand Colors - Green & Golden Yellow Theme */
+    --primary: 136 31% 42%;        /* #498D55 - Green */
     --primary-foreground: 0 0% 100%;
-    --brand-orange: 25 100% 55%;
-    --brand-red: 0 85% 55%;
+    --brand-orange: 39 88% 73%;    /* #F7CA79 - Golden Yellow */
+    --brand-red: 136 45% 35%;      /* Darker green for contrast */
     --brand-dark: 0 0% 12%;
 
     /* UI Colors */
