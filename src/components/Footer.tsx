@@ -7,7 +7,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand Section */}
           <div className="space-y-4">
-            <h3 className="text-2xl font-black tracking-tighter">RAWBLOX</h3>
+            <h3 className="text-2xl font-black tracking-tighter">SELENZO</h3>
             <p className="text-background/70 text-sm leading-relaxed">
               Born from the streets, made for rebels. We craft streetwear that speaks to individuality and self-expression.
             </p>
@@ -89,7 +89,7 @@ const Footer = () => {
         {/* Bottom Section */}
         <div className="border-t border-background/20 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <p className="text-background/60 text-sm">
-            © 2024 RAWBLOX. All rights reserved.
+            © 2024 SELENZO. All rights reserved.
           </p>
           <div className="flex items-center space-x-4">
             <Button variant="link" className="text-background/70 hover:text-background p-0 h-auto">

@@ -9,7 +9,7 @@ const Header = () => {
           {/* Logo */}
           <div className="flex items-center">
             <h1 className="text-2xl font-black tracking-tighter text-foreground">
-              RAWBLOX
+              SELENZO
             </h1>
           </div>
 
