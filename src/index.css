@@ -8,32 +8,32 @@
 
 @layer base {
   :root {
-    /* Core Colors - Grayscale Theme */
-    --background: 0 0% 94%;        /* #F1EFEF */
-    --foreground: 0 0% 12%;        /* #1E1E1E */
+    /* Core Colors - Minimal Two-Color Theme */
+    --background: 0 0% 98%;        /* Light background */
+    --foreground: 0 0% 12%;        /* #1E1E1E - Dark Gray */
     --card: 0 0% 100%;
     --card-foreground: 0 0% 12%;   /* #1E1E1E */
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 12%; /* #1E1E1E */
 
-    /* Brand Colors - Monochromatic Gray Theme */
+    /* Brand Colors - Two-Color System */
     --primary: 0 0% 35%;           /* #595959 - Medium Gray */
-    --primary-foreground: 0 0% 94%; /* #F1EFEF */
-    --brand-orange: 0 0% 65%;      /* #A6A6A6 - Light Gray */
-    --brand-red: 0 0% 12%;         /* #1E1E1E - Dark Gray */
+    --primary-foreground: 0 0% 98%;
+    --brand-orange: 0 0% 35%;      /* #595959 */
+    --brand-red: 0 0% 12%;         /* #1E1E1E */
     --brand-dark: 0 0% 12%;        /* #1E1E1E */
 
     /* UI Colors */
-    --secondary: 0 0% 82%;         /* #D0D0D0 */
+    --secondary: 0 0% 96%;
     --secondary-foreground: 0 0% 12%; /* #1E1E1E */
-    --muted: 0 0% 82%;             /* #D0D0D0 */
+    --muted: 0 0% 94%;
     --muted-foreground: 0 0% 35%;  /* #595959 */
-    --accent: 0 0% 65%;            /* #A6A6A6 */
-    --accent-foreground: 0 0% 12%; /* #1E1E1E */
+    --accent: 0 0% 35%;            /* #595959 */
+    --accent-foreground: 0 0% 98%;
     --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 94%; /* #F1EFEF */
-    --border: 0 0% 82%;            /* #D0D0D0 */
-    --input: 0 0% 82%;             /* #D0D0D0 */
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 90%;
+    --input: 0 0% 96%;
     --ring: 0 0% 35%;              /* #595959 */
 
     /* Gradients */
