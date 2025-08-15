@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import ProductSection from "@/components/ProductSection";
@@ -7,6 +8,8 @@ import Footer from "@/components/Footer";
 import ComingSoonPopup from "@/components/ComingSoonPopup";
 
 const Index = () => {
+  const [showPopup, setShowPopup] = useState(true);
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -17,7 +20,7 @@ const Index = () => {
         <FeaturedProducts />
       </main>
       <Footer />
-      <ComingSoonPopup />
+      {showPopup && <ComingSoonPopup onClose={() => setShowPopup(false)} />}
     </div>
   );
 };

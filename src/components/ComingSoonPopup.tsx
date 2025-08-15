@@ -1,9 +1,13 @@
 import { Button } from "@/components/ui/button";
-import { Clock, Star, Gift, Zap } from "lucide-react";
+import { Clock, Star, Gift, Zap, X } from "lucide-react";
 import { useState } from "react";
 import { toast } from "@/hooks/use-toast";
 
-const ComingSoonPopup = () => {
+interface ComingSoonPopupProps {
+  onClose: () => void;
+}
+
+const ComingSoonPopup = ({ onClose }: ComingSoonPopupProps) => {
   const [email, setEmail] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -30,7 +34,15 @@ const ComingSoonPopup = () => {
 
   return (
     <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-      <div className="bg-card rounded-2xl shadow-2xl max-w-md w-full mx-auto border border-border animate-scale-in">
+      <div className="bg-card rounded-2xl shadow-2xl max-w-md w-full mx-auto border border-border animate-scale-in relative">
+        {/* Close Button */}
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 z-10 w-8 h-8 bg-black/20 hover:bg-black/40 rounded-full flex items-center justify-center transition-colors"
+        >
+          <X className="w-4 h-4 text-white" />
+        </button>
+        
         {/* Header */}
         <div className="bg-gradient-hero rounded-t-2xl p-6 text-center text-white">
           <div className="inline-flex items-center justify-center w-16 h-16 bg-white/20 rounded-full mb-4">
