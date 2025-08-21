@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Link } from "react-router-dom";
 
 const MenTshirts = () => {
   const products = [
@@ -11,7 +12,8 @@ const MenTshirts = () => {
       price: "$29",
       image: "/src/assets/black-tee.jpg",
       sizes: ["S", "M", "L", "XL"],
-      description: "Premium cotton blend essential tee"
+      description: "Premium cotton blend essential tee",
+      slug: "essential-black-tee"
     },
     {
       id: 2,
@@ -19,7 +21,8 @@ const MenTshirts = () => {
       price: "$29",
       image: "/src/assets/white-tee.jpg",
       sizes: ["S", "M", "L", "XL"],
-      description: "Timeless white cotton tee"
+      description: "Timeless white cotton tee",
+      slug: "classic-white-tee"
     },
     {
       id: 3,
@@ -54,13 +57,15 @@ const MenTshirts = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {products.map((product) => (
             <div key={product.id} className="group">
-              <div className="aspect-square bg-muted rounded-lg overflow-hidden mb-4">
-                <img 
-                  src={product.image} 
-                  alt={product.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
+              <Link to={`/products/${product.slug}`}>
+                <div className="aspect-square bg-muted rounded-lg overflow-hidden mb-4">
+                  <img 
+                    src={product.image} 
+                    alt={product.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+              </Link>
               
               <div className="space-y-2">
                 <h3 className="font-semibold text-lg">{product.name}</h3>
@@ -76,7 +81,9 @@ const MenTshirts = () => {
                 
                 <div className="flex items-center justify-between">
                   <span className="text-xl font-bold">{product.price}</span>
-                  <Button size="sm">Add to Cart</Button>
+                  <Link to={`/products/${product.slug}`}>
+                    <Button size="sm">View Details</Button>
+                  </Link>
                 </div>
               </div>
             </div>

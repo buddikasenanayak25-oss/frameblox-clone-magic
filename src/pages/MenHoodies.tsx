@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Link } from "react-router-dom";
 
 const MenHoodies = () => {
   const products = [
@@ -11,7 +12,8 @@ const MenHoodies = () => {
       price: "$89",
       image: "/src/assets/hoodie-urban-phantom.jpg",
       sizes: ["S", "M", "L", "XL"],
-      description: "Premium streetwear hoodie with urban graphics"
+      description: "Premium streetwear hoodie with urban graphics",
+      slug: "urban-phantom-hoodie"
     },
     {
       id: 2,
@@ -19,7 +21,8 @@ const MenHoodies = () => {
       price: "$95",
       image: "/src/assets/hoodie-shadow-drip.jpg",
       sizes: ["M", "L", "XL", "XXL"],
-      description: "Limited edition shadow drip design"
+      description: "Limited edition shadow drip design",
+      slug: "shadow-drip-hoodie"
     },
     {
       id: 3,
@@ -27,7 +30,8 @@ const MenHoodies = () => {
       price: "$99",
       image: "/src/assets/hoodie-neon-rebellion.jpg",
       sizes: ["S", "M", "L", "XL"],
-      description: "Bold neon graphics for the rebels"
+      description: "Bold neon graphics for the rebels",
+      slug: "neon-rebellion-hoodie"
     },
     {
       id: 4,
@@ -35,7 +39,8 @@ const MenHoodies = () => {
       price: "$79",
       image: "/src/assets/hoodie-urban-phantom.jpg",
       sizes: ["S", "M", "L", "XL", "XXL"],
-      description: "Timeless black hoodie with premium comfort"
+      description: "Timeless black hoodie with premium comfort",
+      slug: "classic-black-hoodie"
     },
     {
       id: 5,
@@ -43,7 +48,8 @@ const MenHoodies = () => {
       price: "$85",
       image: "/src/assets/hoodie-shadow-drip.jpg",
       sizes: ["M", "L", "XL"],
-      description: "Clean minimalist design in soft gray"
+      description: "Clean minimalist design in soft gray",
+      slug: "minimalist-gray-hoodie"
     },
     {
       id: 6,
@@ -51,7 +57,8 @@ const MenHoodies = () => {
       price: "$92",
       image: "/src/assets/hoodie-neon-rebellion.jpg",
       sizes: ["S", "M", "L", "XL"],
-      description: "Vibrant electric blue with modern cut"
+      description: "Vibrant electric blue with modern cut",
+      slug: "electric-blue-hoodie"
     }
   ];
 
@@ -70,13 +77,15 @@ const MenHoodies = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {products.map((product) => (
             <div key={product.id} className="group">
-              <div className="aspect-square bg-muted rounded-lg overflow-hidden mb-4">
-                <img 
-                  src={product.image} 
-                  alt={product.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
+              <Link to={`/products/${product.slug}`}>
+                <div className="aspect-square bg-muted rounded-lg overflow-hidden mb-4">
+                  <img 
+                    src={product.image} 
+                    alt={product.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+              </Link>
               
               <div className="space-y-2">
                 <h3 className="font-semibold text-lg">{product.name}</h3>
@@ -92,7 +101,9 @@ const MenHoodies = () => {
                 
                 <div className="flex items-center justify-between">
                   <span className="text-xl font-bold">{product.price}</span>
-                  <Button size="sm">Add to Cart</Button>
+                  <Link to={`/products/${product.slug}`}>
+                    <Button size="sm">View Details</Button>
+                  </Link>
                 </div>
               </div>
             </div>

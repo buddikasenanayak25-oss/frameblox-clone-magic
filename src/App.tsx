@@ -14,6 +14,13 @@ import MenJackets from "./pages/MenJackets";
 import WomenTshirts from "./pages/WomenTshirts";
 import WomenHoodies from "./pages/WomenHoodies";
 import WomenJackets from "./pages/WomenJackets";
+import EssentialBlackTee from "./pages/products/EssentialBlackTee";
+import ClassicWhiteTee from "./pages/products/ClassicWhiteTee";
+import NeonRebellionHoodie from "./pages/products/NeonRebellionHoodie";
+import ShadowDripHoodie from "./pages/products/ShadowDripHoodie";
+import SpringJacket from "./pages/products/SpringJacket";
+import Payment from "./pages/Payment";
+import PaymentSuccess from "./pages/PaymentSuccess";
 
 const queryClient = new QueryClient();
 
@@ -34,6 +41,13 @@ const App = () => (
           <Route path="/women/tshirts" element={<WomenTshirts />} />
           <Route path="/women/hoodies" element={<WomenHoodies />} />
           <Route path="/women/jackets" element={<WomenJackets />} />
+          <Route path="/products/essential-black-tee" element={<EssentialBlackTee />} />
+          <Route path="/products/classic-white-tee" element={<ClassicWhiteTee />} />
+          <Route path="/products/neon-rebellion-hoodie" element={<NeonRebellionHoodie />} />
+          <Route path="/products/shadow-drip-hoodie" element={<ShadowDripHoodie />} />
+          <Route path="/products/spring-jacket" element={<SpringJacket />} />
+          <Route path="/payment" element={<Payment />} />
+          <Route path="/payment-success" element={<PaymentSuccess />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

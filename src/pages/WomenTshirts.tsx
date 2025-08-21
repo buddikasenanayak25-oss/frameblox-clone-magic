@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Link } from "react-router-dom";
 
 const WomenTshirts = () => {
   const products = [
@@ -11,7 +12,8 @@ const WomenTshirts = () => {
       price: "$32",
       image: "/src/assets/white-tee.jpg",
       sizes: ["XS", "S", "M", "L", "XL"],
-      description: "Soft cotton blend essential for everyday wear"
+      description: "Soft cotton blend essential for everyday wear",
+      slug: "women-essential-white-tee"
     },
     {
       id: 2,
@@ -19,7 +21,8 @@ const WomenTshirts = () => {
       price: "$32",
       image: "/src/assets/black-tee.jpg",
       sizes: ["XS", "S", "M", "L", "XL"],
-      description: "Flattering fitted cut in classic black"
+      description: "Flattering fitted cut in classic black",
+      slug: "women-fitted-black-tee"
     },
     {
       id: 3,
@@ -27,7 +30,8 @@ const WomenTshirts = () => {
       price: "$38",
       image: "/src/assets/white-tee.jpg",
       sizes: ["XS", "S", "M", "L"],
-      description: "Trendy cropped tee with vintage wash"
+      description: "Trendy cropped tee with vintage wash",
+      slug: "women-cropped-vintage-tee"
     },
     {
       id: 4,
@@ -35,7 +39,8 @@ const WomenTshirts = () => {
       price: "$35",
       image: "/src/assets/black-tee.jpg",
       sizes: ["S", "M", "L", "XL"],
-      description: "Relaxed boyfriend fit for casual comfort"
+      description: "Relaxed boyfriend fit for casual comfort",
+      slug: "women-oversized-boyfriend-tee"
     },
     {
       id: 5,
@@ -43,7 +48,8 @@ const WomenTshirts = () => {
       price: "$39",
       image: "/src/assets/white-tee.jpg",
       sizes: ["XS", "S", "M", "L", "XL"],
-      description: "Elegant V-neck in premium cotton"
+      description: "Elegant V-neck in premium cotton",
+      slug: "women-vneck-premium-tee"
     },
     {
       id: 6,
@@ -51,7 +57,8 @@ const WomenTshirts = () => {
       price: "$42",
       image: "/src/assets/black-tee.jpg",
       sizes: ["XS", "S", "M", "L"],
-      description: "Timeless striped pattern for versatile styling"
+      description: "Timeless striped pattern for versatile styling",
+      slug: "women-striped-casual-tee"
     }
   ];
 
@@ -70,13 +77,15 @@ const WomenTshirts = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {products.map((product) => (
             <div key={product.id} className="group">
-              <div className="aspect-square bg-muted rounded-lg overflow-hidden mb-4">
-                <img 
-                  src={product.image} 
-                  alt={product.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
+              <Link to={`/products/${product.slug}`}>
+                <div className="aspect-square bg-muted rounded-lg overflow-hidden mb-4">
+                  <img 
+                    src={product.image} 
+                    alt={product.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+              </Link>
               
               <div className="space-y-2">
                 <h3 className="font-semibold text-lg">{product.name}</h3>
@@ -92,7 +101,9 @@ const WomenTshirts = () => {
                 
                 <div className="flex items-center justify-between">
                   <span className="text-xl font-bold">{product.price}</span>
-                  <Button size="sm">Add to Cart</Button>
+                  <Link to={`/products/${product.slug}`}>
+                    <Button size="sm">View Details</Button>
+                  </Link>
                 </div>
               </div>
             </div>
