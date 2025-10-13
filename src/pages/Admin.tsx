@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card } from "@/components/ui/card";
 import { Package, ShoppingCart, DollarSign, Users } from "lucide-react";
+import { ProductsManagement } from "@/components/admin/ProductsManagement";
 
 const Admin = () => {
   const [loading, setLoading] = useState(true);
@@ -117,10 +118,7 @@ const Admin = () => {
           </TabsList>
 
           <TabsContent value="products" className="space-y-4">
-            <Card className="p-6">
-              <h2 className="text-2xl font-bold mb-4">Products Management</h2>
-              <p className="text-muted-foreground">Product management interface coming soon...</p>
-            </Card>
+            <ProductsManagement />
           </TabsContent>
 
           <TabsContent value="orders" className="space-y-4">
