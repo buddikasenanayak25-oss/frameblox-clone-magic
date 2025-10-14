@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -45,21 +46,24 @@ const Footer = () => {
           <div className="space-y-4">
             <h4 className="font-bold text-sm tracking-wide uppercase">About</h4>
             <div className="space-y-2">
-              <a href="#" className="block text-background/70 hover:text-background transition-colors text-sm">
+              <Link to="/about" className="block text-background/70 hover:text-background transition-colors text-sm">
+                About Us
+              </Link>
+              <Link to="/our-story" className="block text-background/70 hover:text-background transition-colors text-sm">
                 Our Story
-              </a>
-              <a href="#" className="block text-background/70 hover:text-background transition-colors text-sm">
+              </Link>
+              <Link to="/size-guide" className="block text-background/70 hover:text-background transition-colors text-sm">
                 Size Guide
-              </a>
-              <a href="#" className="block text-background/70 hover:text-background transition-colors text-sm">
+              </Link>
+              <Link to="/shipping" className="block text-background/70 hover:text-background transition-colors text-sm">
                 Shipping
-              </a>
-              <a href="#" className="block text-background/70 hover:text-background transition-colors text-sm">
+              </Link>
+              <Link to="/returns" className="block text-background/70 hover:text-background transition-colors text-sm">
                 Returns
-              </a>
-              <a href="#" className="block text-background/70 hover:text-background transition-colors text-sm">
+              </Link>
+              <Link to="/faq" className="block text-background/70 hover:text-background transition-colors text-sm">
                 FAQ
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -67,12 +71,12 @@ const Footer = () => {
           <div className="space-y-4">
             <h4 className="font-bold text-sm tracking-wide uppercase">Support</h4>
             <div className="space-y-2">
-              <a href="#" className="block text-background/70 hover:text-background transition-colors text-sm">
+              <Link to="/contact" className="block text-background/70 hover:text-background transition-colors text-sm">
                 Contact
-              </a>
-              <a href="#" className="block text-background/70 hover:text-background transition-colors text-sm">
+              </Link>
+              <Link to="/support" className="block text-background/70 hover:text-background transition-colors text-sm">
                 Help Center
-              </a>
+              </Link>
               <a href="#" className="block text-background/70 hover:text-background transition-colors text-sm">
                 Track Order
               </a>
