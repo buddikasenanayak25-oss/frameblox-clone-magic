@@ -71,7 +71,12 @@ const Support = () => {
 
           {/* FAQs */}
           <div className="mb-12">
-            <h2 className="text-3xl font-bold mb-6 text-foreground">Frequently Asked Questions</h2>
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-3xl font-bold text-foreground">Frequently Asked Questions</h2>
+              <Link to="/faq">
+                <Button variant="outline">View All FAQs</Button>
+              </Link>
+            </div>
             
             <Accordion type="single" collapsible className="w-full">
               <AccordionItem value="item-1">
