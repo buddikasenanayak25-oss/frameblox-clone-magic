@@ -1,7 +1,9 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
-import { Users, Target, Zap, Heart } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Users, Target, Zap, Heart, TrendingUp, Globe, Shirt, Award } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const OurStory = () => {
   const milestones = [
@@ -173,6 +175,123 @@ const OurStory = () => {
           </div>
         </section>
 
+        {/* Impact Section */}
+        <section className="py-16 md:py-24 container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
+                Our Impact
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Building more than a brand—creating a movement that's changing streetwear culture.
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              {[
+                { icon: <Users className="w-8 h-8" />, number: "100K+", label: "Community Members" },
+                { icon: <Globe className="w-8 h-8" />, number: "50+", label: "Countries Worldwide" },
+                { icon: <Shirt className="w-8 h-8" />, number: "500K+", label: "Items Sold" },
+                { icon: <Award className="w-8 h-8" />, number: "95%", label: "Customer Satisfaction" },
+              ].map((stat, index) => (
+                <Card key={index} className="text-center hover:shadow-lg transition-shadow">
+                  <CardContent className="p-6">
+                    <div className="text-primary mb-3 flex justify-center">
+                      {stat.icon}
+                    </div>
+                    <div className="text-3xl font-bold text-foreground mb-2">
+                      {stat.number}
+                    </div>
+                    <div className="text-sm text-muted-foreground">
+                      {stat.label}
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* The Team */}
+        <section className="py-16 md:py-24 bg-muted/30">
+          <div className="container mx-auto px-4">
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
+                  The People Behind Selenzo
+                </h2>
+                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                  Meet the diverse team of creators, designers, and culture enthusiasts who bring our vision to life.
+                </p>
+              </div>
+              
+              <div className="grid md:grid-cols-3 gap-8">
+                {[
+                  {
+                    name: "Alex Rivera",
+                    role: "Co-Founder & Creative Director",
+                    bio: "Former street artist turned designer. Brings 10+ years of urban culture expertise to every collection."
+                  },
+                  {
+                    name: "Maya Chen",
+                    role: "Co-Founder & Head of Operations",
+                    bio: "Sustainability advocate and fashion innovator. Leads our eco-friendly initiatives and supply chain."
+                  },
+                  {
+                    name: "Jordan Blake",
+                    role: "Co-Founder & Community Lead",
+                    bio: "Social media pioneer and community builder. Connects our brand with culture creators worldwide."
+                  }
+                ].map((member, index) => (
+                  <Card key={index} className="hover:shadow-lg transition-shadow">
+                    <CardContent className="p-6">
+                      <div className="aspect-square bg-muted rounded-lg mb-4 flex items-center justify-center">
+                        <Users className="w-16 h-16 text-muted-foreground" />
+                      </div>
+                      <h3 className="text-xl font-bold text-foreground mb-1">
+                        {member.name}
+                      </h3>
+                      <p className="text-sm text-primary font-medium mb-3">
+                        {member.role}
+                      </p>
+                      <p className="text-sm text-muted-foreground">
+                        {member.bio}
+                      </p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Mission Forward */}
+        <section className="py-16 md:py-24 container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <Card className="overflow-hidden border-primary/20">
+              <div className="bg-gradient-to-br from-primary/10 to-primary/5 p-8 md:p-12">
+                <div className="flex items-start gap-4 mb-6">
+                  <TrendingUp className="w-8 h-8 text-primary shrink-0" />
+                  <div>
+                    <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
+                      Looking Ahead
+                    </h2>
+                    <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+                      We're not just building a clothing brand—we're cultivating a culture. Our vision for the 
+                      future includes opening physical community spaces, launching a mentorship program for 
+                      emerging designers, and achieving 100% sustainable production by 2026.
+                    </p>
+                    <p className="text-lg text-muted-foreground leading-relaxed">
+                      Every piece you wear, every collection we drop, every conversation we have—it all contributes 
+                      to a larger movement of authentic self-expression and community-driven creativity.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </Card>
+          </div>
+        </section>
+
         {/* Promise Section */}
         <section className="py-16 md:py-24 bg-gradient-to-br from-primary/5 to-background">
           <div className="container mx-auto px-4">
@@ -186,9 +305,21 @@ const OurStory = () => {
                   your unique identity. Every stitch, every design, every interaction reflects our dedication 
                   to excellence and our respect for the culture that inspires us.
                 </p>
-                <p className="text-xl font-semibold text-foreground">
+                <p className="text-xl font-semibold text-foreground mb-8">
                   This is just the beginning. The best is yet to come.
                 </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Link to="/shop">
+                    <Button size="lg">
+                      Shop The Collection
+                    </Button>
+                  </Link>
+                  <Link to="/contact">
+                    <Button variant="outline" size="lg">
+                      Join Our Community
+                    </Button>
+                  </Link>
+                </div>
               </CardContent>
             </Card>
           </div>
