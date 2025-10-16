@@ -80,12 +80,12 @@ const Footer = () => {
               <a href="#" className="block text-background/70 hover:text-background transition-colors text-sm">
                 Track Order
               </a>
-              <a href="#" className="block text-background/70 hover:text-background transition-colors text-sm">
+              <Link to="/privacy-policy" className="block text-background/70 hover:text-background transition-colors text-sm">
                 Privacy Policy
-              </a>
-              <a href="#" className="block text-background/70 hover:text-background transition-colors text-sm">
+              </Link>
+              <Link to="/terms-of-service" className="block text-background/70 hover:text-background transition-colors text-sm">
                 Terms of Service
-              </a>
+              </Link>
             </div>
           </div>
         </div>
