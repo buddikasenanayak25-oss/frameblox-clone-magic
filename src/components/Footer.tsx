@@ -33,12 +33,12 @@ const Footer = () => {
               <a href="#" className="block text-background/70 hover:text-background transition-colors text-sm">
                 Men
               </a>
-              <a href="#" className="block text-background/70 hover:text-background transition-colors text-sm">
+              <Link to="/women" className="block text-background/70 hover:text-background transition-colors text-sm">
                 Women
-              </a>
-              <a href="#" className="block text-background/70 hover:text-background transition-colors text-sm">
+              </Link>
+              <Link to="/accessories" className="block text-background/70 hover:text-background transition-colors text-sm">
                 Accessories
-              </a>
+              </Link>
             </div>
           </div>
 

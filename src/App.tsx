@@ -34,6 +34,7 @@ import FAQ from "./pages/FAQ";
 import Collections from "./pages/Collections";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
+import Accessories from "./pages/Accessories";
 
 const queryClient = new QueryClient();
 
@@ -72,6 +73,7 @@ const App = () => (
           <Route path="/returns" element={<Returns />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/collections" element={<Collections />} />
+          <Route path="/accessories" element={<Accessories />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
