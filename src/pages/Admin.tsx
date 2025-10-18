@@ -7,15 +7,47 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card } from "@/components/ui/card";
 import { Package, ShoppingCart, DollarSign, Users } from "lucide-react";
 import { ProductsManagement } from "@/components/admin/ProductsManagement";
+import { OrdersManagement } from "@/components/admin/OrdersManagement";
+import { CategoriesManagement } from "@/components/admin/CategoriesManagement";
+import { UsersManagement } from "@/components/admin/UsersManagement";
 
 const Admin = () => {
   const [loading, setLoading] = useState(true);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [stats, setStats] = useState({
+    products: 0,
+    orders: 0,
+    revenue: 0,
+    users: 0,
+  });
   const navigate = useNavigate();
 
   useEffect(() => {
     checkAdminAccess();
   }, []);
+
+  useEffect(() => {
+    if (isAdmin) {
+      loadStats();
+    }
+  }, [isAdmin]);
+
+  const loadStats = async () => {
+    const [productsRes, ordersRes, usersRes] = await Promise.all([
+      supabase.from("products").select("*", { count: "exact", head: true }),
+      supabase.from("orders").select("*"),
+      supabase.from("profiles").select("*", { count: "exact", head: true }),
+    ]);
+
+    const revenue = ordersRes.data?.reduce((sum, order) => sum + Number(order.total_amount), 0) || 0;
+
+    setStats({
+      products: productsRes.count || 0,
+      orders: ordersRes.data?.length || 0,
+      revenue,
+      users: usersRes.count || 0,
+    });
+  };
 
   const checkAdminAccess = async () => {
     try {
@@ -73,7 +105,7 @@ const Admin = () => {
               <Package className="h-8 w-8 text-primary" />
               <div>
                 <p className="text-sm text-muted-foreground">Products</p>
-                <p className="text-2xl font-bold">0</p>
+                <p className="text-2xl font-bold">{stats.products}</p>
               </div>
             </div>
           </Card>
@@ -83,7 +115,7 @@ const Admin = () => {
               <ShoppingCart className="h-8 w-8 text-primary" />
               <div>
                 <p className="text-sm text-muted-foreground">Orders</p>
-                <p className="text-2xl font-bold">0</p>
+                <p className="text-2xl font-bold">{stats.orders}</p>
               </div>
             </div>
           </Card>
@@ -93,7 +125,7 @@ const Admin = () => {
               <DollarSign className="h-8 w-8 text-primary" />
               <div>
                 <p className="text-sm text-muted-foreground">Revenue</p>
-                <p className="text-2xl font-bold">$0</p>
+                <p className="text-2xl font-bold">${stats.revenue.toFixed(2)}</p>
               </div>
             </div>
           </Card>
@@ -103,7 +135,7 @@ const Admin = () => {
               <Users className="h-8 w-8 text-primary" />
               <div>
                 <p className="text-sm text-muted-foreground">Users</p>
-                <p className="text-2xl font-bold">0</p>
+                <p className="text-2xl font-bold">{stats.users}</p>
               </div>
             </div>
           </Card>
@@ -122,24 +154,15 @@ const Admin = () => {
           </TabsContent>
 
           <TabsContent value="orders" className="space-y-4">
-            <Card className="p-6">
-              <h2 className="text-2xl font-bold mb-4">Orders Management</h2>
-              <p className="text-muted-foreground">Orders management interface coming soon...</p>
-            </Card>
+            <OrdersManagement />
           </TabsContent>
 
           <TabsContent value="categories" className="space-y-4">
-            <Card className="p-6">
-              <h2 className="text-2xl font-bold mb-4">Categories Management</h2>
-              <p className="text-muted-foreground">Categories management interface coming soon...</p>
-            </Card>
+            <CategoriesManagement />
           </TabsContent>
 
           <TabsContent value="users" className="space-y-4">
-            <Card className="p-6">
-              <h2 className="text-2xl font-bold mb-4">Users Management</h2>
-              <p className="text-muted-foreground">Users management interface coming soon...</p>
-            </Card>
+            <UsersManagement />
           </TabsContent>
         </Tabs>
       </main>
