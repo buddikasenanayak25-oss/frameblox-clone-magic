@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight } from "lucide-react";
+import mensCollectionImage from "@/assets/mens-collection.jpg";
+import womensCollectionImage from "@/assets/womens-collection.jpg";
 
 const Collections = () => {
   const collections = [
@@ -15,7 +17,7 @@ const Collections = () => {
         { name: "Hoodies", path: "/men/hoodies", count: "8+ Styles" },
         { name: "Jackets", path: "/men/jackets", count: "6+ Styles" },
       ],
-      image: "/placeholder.svg",
+      image: mensCollectionImage,
       path: "/men",
     },
     {
@@ -26,7 +28,7 @@ const Collections = () => {
         { name: "Hoodies", path: "/women/hoodies", count: "7+ Styles" },
         { name: "Jackets", path: "/women/jackets", count: "5+ Styles" },
       ],
-      image: "/placeholder.svg",
+      image: womensCollectionImage,
       path: "/women",
     },
   ];
@@ -72,6 +74,11 @@ const Collections = () => {
             {collections.map((collection, index) => (
               <Card key={index} className="overflow-hidden group hover:shadow-lg transition-shadow">
                 <div className="aspect-[4/3] bg-muted relative overflow-hidden">
+                  <img 
+                    src={collection.image} 
+                    alt={collection.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent z-10" />
                   <div className="absolute bottom-0 left-0 right-0 p-6 z-20">
                     <h2 className="text-3xl font-bold text-foreground mb-2">
