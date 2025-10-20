@@ -25,11 +25,11 @@ const Header = () => {
       <div className="container-custom">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center">
-            <h1 className="text-2xl font-black tracking-tighter text-foreground">
+          <Link to="/" className="flex items-center">
+            <h1 className="text-2xl font-black tracking-tighter text-foreground hover:text-primary transition-colors cursor-pointer">
               SELENZO
             </h1>
-          </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <NavigationMenu className="hidden md:flex">
