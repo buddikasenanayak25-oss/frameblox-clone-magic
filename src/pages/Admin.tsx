@@ -4,50 +4,21 @@ import { supabase } from "@/integrations/supabase/client";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Card } from "@/components/ui/card";
-import { Package, ShoppingCart, DollarSign, Users } from "lucide-react";
 import { ProductsManagement } from "@/components/admin/ProductsManagement";
 import { OrdersManagement } from "@/components/admin/OrdersManagement";
 import { CategoriesManagement } from "@/components/admin/CategoriesManagement";
 import { UsersManagement } from "@/components/admin/UsersManagement";
+import { DashboardStats } from "@/components/admin/DashboardStats";
+import { InventoryAlerts } from "@/components/admin/InventoryAlerts";
 
 const Admin = () => {
   const [loading, setLoading] = useState(true);
   const [isAdmin, setIsAdmin] = useState(false);
-  const [stats, setStats] = useState({
-    products: 0,
-    orders: 0,
-    revenue: 0,
-    users: 0,
-  });
   const navigate = useNavigate();
 
   useEffect(() => {
     checkAdminAccess();
   }, []);
-
-  useEffect(() => {
-    if (isAdmin) {
-      loadStats();
-    }
-  }, [isAdmin]);
-
-  const loadStats = async () => {
-    const [productsRes, ordersRes, usersRes] = await Promise.all([
-      supabase.from("products").select("*", { count: "exact", head: true }),
-      supabase.from("orders").select("*"),
-      supabase.from("profiles").select("*", { count: "exact", head: true }),
-    ]);
-
-    const revenue = ordersRes.data?.reduce((sum, order) => sum + Number(order.total_amount), 0) || 0;
-
-    setStats({
-      products: productsRes.count || 0,
-      orders: ordersRes.data?.length || 0,
-      revenue,
-      users: usersRes.count || 0,
-    });
-  };
 
   const checkAdminAccess = async () => {
     try {
@@ -99,55 +70,19 @@ const Admin = () => {
       <main className="container-custom py-8">
         <h1 className="text-4xl font-black tracking-tighter mb-8">Admin Dashboard</h1>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-          <Card className="p-6">
-            <div className="flex items-center gap-4">
-              <Package className="h-8 w-8 text-primary" />
-              <div>
-                <p className="text-sm text-muted-foreground">Products</p>
-                <p className="text-2xl font-bold">{stats.products}</p>
-              </div>
-            </div>
-          </Card>
-          
-          <Card className="p-6">
-            <div className="flex items-center gap-4">
-              <ShoppingCart className="h-8 w-8 text-primary" />
-              <div>
-                <p className="text-sm text-muted-foreground">Orders</p>
-                <p className="text-2xl font-bold">{stats.orders}</p>
-              </div>
-            </div>
-          </Card>
-          
-          <Card className="p-6">
-            <div className="flex items-center gap-4">
-              <DollarSign className="h-8 w-8 text-primary" />
-              <div>
-                <p className="text-sm text-muted-foreground">Revenue</p>
-                <p className="text-2xl font-bold">${stats.revenue.toFixed(2)}</p>
-              </div>
-            </div>
-          </Card>
-          
-          <Card className="p-6">
-            <div className="flex items-center gap-4">
-              <Users className="h-8 w-8 text-primary" />
-              <div>
-                <p className="text-sm text-muted-foreground">Users</p>
-                <p className="text-2xl font-bold">{stats.users}</p>
-              </div>
-            </div>
-          </Card>
-        </div>
-
-        <Tabs defaultValue="products" className="space-y-4">
+        <Tabs defaultValue="dashboard" className="space-y-4">
           <TabsList>
+            <TabsTrigger value="dashboard">Dashboard</TabsTrigger>
             <TabsTrigger value="products">Products</TabsTrigger>
             <TabsTrigger value="orders">Orders</TabsTrigger>
+            <TabsTrigger value="inventory">Inventory</TabsTrigger>
             <TabsTrigger value="categories">Categories</TabsTrigger>
             <TabsTrigger value="users">Users</TabsTrigger>
           </TabsList>
+
+          <TabsContent value="dashboard" className="space-y-4">
+            <DashboardStats />
+          </TabsContent>
 
           <TabsContent value="products" className="space-y-4">
             <ProductsManagement />
@@ -155,6 +90,10 @@ const Admin = () => {
 
           <TabsContent value="orders" className="space-y-4">
             <OrdersManagement />
+          </TabsContent>
+
+          <TabsContent value="inventory" className="space-y-4">
+            <InventoryAlerts />
           </TabsContent>
 
           <TabsContent value="categories" className="space-y-4">

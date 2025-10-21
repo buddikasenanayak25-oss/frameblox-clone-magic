@@ -19,6 +19,7 @@ import {
 } from "@/components/ui/select";
 import { toast } from "@/hooks/use-toast";
 import { Eye } from "lucide-react";
+import { OrderDetailsDialog } from "./OrderDetailsDialog";
 
 interface Order {
   id: string;
@@ -33,6 +34,8 @@ interface Order {
 export const OrdersManagement = () => {
   const [orders, setOrders] = useState<Order[]>([]);
   const [loading, setLoading] = useState(true);
+  const [selectedOrderId, setSelectedOrderId] = useState<string | null>(null);
+  const [dialogOpen, setDialogOpen] = useState(false);
 
   useEffect(() => {
     loadOrders();
@@ -129,7 +132,14 @@ export const OrdersManagement = () => {
               </TableCell>
               <TableCell>{new Date(order.created_at).toLocaleDateString()}</TableCell>
               <TableCell>
-                <Button variant="ghost" size="sm">
+                <Button 
+                  variant="ghost" 
+                  size="sm"
+                  onClick={() => {
+                    setSelectedOrderId(order.id);
+                    setDialogOpen(true);
+                  }}
+                >
                   <Eye className="h-4 w-4" />
                 </Button>
               </TableCell>
@@ -140,6 +150,13 @@ export const OrdersManagement = () => {
       {orders.length === 0 && (
         <p className="text-center text-muted-foreground py-8">No orders found</p>
       )}
+
+      <OrderDetailsDialog
+        orderId={selectedOrderId}
+        open={dialogOpen}
+        onOpenChange={setDialogOpen}
+        onUpdate={loadOrders}
+      />
     </Card>
   );
 };
